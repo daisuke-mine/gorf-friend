@@ -1,0 +1,2 @@
+class BrogComment < ApplicationRecord
+end
