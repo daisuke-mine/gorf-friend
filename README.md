@@ -1,24 +1,36 @@
-# README
+# ゴルとも！
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
+コロナ禍で人気が出てきているスポーツ！ゴルフのSNSサイトになります。
+クラブセッティングやゴルフ友達、ゴルフ場情報などゴルフに関することならなんでもok！
 
-Things you may want to cover:
 
-* Ruby version
+### サイトテーマ
+いつでもどこでもゴルフ好きと繋がれるSNS
 
-* System dependencies
+### テーマを選んだ理由
+コロナ禍で密かにブームになっているゴルフですが、人が中々集まらず行きたい時に行けないこともあります。
+また、1人ゴルフのサービス等もありますが、全く知らない人とラウンドすることに抵抗がある人も多いです。
+クラブセッティングなど相談したくても、ゴルフショップまでは行きたくないなどの悩みもあります。
+そこで、ゴルとも！を使いコミュニケーションをとってからラウンドに向かったり、悩みなどを解消してもらいと考えました。
+私自身も上記内容で困った経験があるのでこのようなサイトがあればいいなと思い作りたいと考えました。
 
-* Configuration
 
-* Database creation
+### ターゲットユーザ
+ゴルフをしている人
 
-* Database initialization
+### 主な利用シーン
+日常
 
-* How to run the test suite
+## 設計書
+<...>
 
-* Services (job queues, cache servers, search engines, etc.)
+## チャレンジ要素一覧
+https://docs.google.com/spreadsheets/d/1PipE-3PEUhIIFIg68O5x3fqk1KhPi0WY9osOFPa3yPY/edit?usp=sharing
 
-* Deployment instructions
-
-* ...
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
