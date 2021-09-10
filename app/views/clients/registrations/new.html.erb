@@ -27,3 +27,17 @@
 <% end %>
 
 <%= render "clients/shared/links" %>
+
+blog.rb
+  has_many_attached :images
+  has_many :favorites
+  belongs_to :client
+マイグレーション brog_comments
+      t.integer :client_id
+      t.integer :brog_id
+      t.text :comment
+マイグレーション blogs
+      t.integer :client_id
+      t.string :title
+      t.text :body
+

@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BrogCommentTest < ActiveSupport::TestCase
+class Admins::BlogCommentsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

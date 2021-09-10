@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BrogTest < ActiveSupport::TestCase
+class Admins::BlogsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

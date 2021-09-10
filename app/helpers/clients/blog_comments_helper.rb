@@ -1,0 +1,2 @@
+module Clients::BlogCommentsHelper
+end

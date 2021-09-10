@@ -1,6 +1,6 @@
-class CreateBrogComments < ActiveRecord::Migration[5.2]
+class CreateBlogComments < ActiveRecord::Migration[5.2]
   def change
-    create_table :brog_comments do |t|
+    create_table :blog_comments do |t|
       
       t.integer :client_id
       t.integer :brog_id

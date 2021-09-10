@@ -1,2 +1,0 @@
-class BrogComment < ApplicationRecord
-end
