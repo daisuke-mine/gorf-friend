@@ -10,14 +10,61 @@
   </head>
 
   <body>
+    <header>
+      <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class = "container">
+          <%= link_to "ゴルとも！", root_path, class: "navbar-brand" %>
+          <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+            <ul class="navbar-nav ml-auto">
+              <% if client_signed_in? %>
+                <li>
+                 <%= link_to "マイページ", client_path(current_client), class: 'nav-link text-light mr-3' %>
+                </li>
+                <li>
+                  <%= link_to "ゴルフ場検索", root_path, class: 'nav-link text-light mr-3'  %>
+                </li>
+                <li>
+                  <%= link_to "ユーザー検索", root_path, class: 'nav-link text-light mr-3' %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_client_session_path, method: :delete, class: 'nav-link text-light mr-3' %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to "ゴルフ場検索", root_path, class: 'nav-link text-light mr-3'  %>
+                </li>
+                <li>
+                  <%= link_to "新規登録", new_client_registration_path, class: 'nav-link text-light mr-3' %>
+                </li>
+                <li>
+                  <%= link_to "ログイン", new_client_session_path, class: 'nav-link text-light mr-3'  %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <% if flash[:notice] %>
       <p><%= flash[:notice] %></p>
     <% end %>
-    
+
     <% if flash[:alert] %>
       <p><%= flash[:alert] %></p>
     <% end %>
-    
+
+
+
     <%= yield %>
+
+    <footer>
+      <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
+          <ul class="navbar-nav ml-auto">
+            <li><%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-light mr-3' %></li>
+          </ul>
+        </div>
+      </nav>
+    </footer>
   </body>
 </html>

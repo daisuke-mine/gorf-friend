@@ -1,0 +1,36 @@
+<div class = "container">
+  <div class = "row" >
+
+    <div class = "col-md-3" >
+      <% if @client.profile_image.attached? %>
+        <% @client.profile_image.each do |image| %>
+          <%= image_tag image, fallback: "no_image.jpg" %> <br>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class = "col-md-9" >
+      <table cellpadding="20">
+        <thead>
+          <tr><th></th></th></tr>
+        </thead>
+        <tbody>
+          <tr><td><%= current_client.name %></td></tr>
+          <tr>
+            <td><%= current_client.name %></td>
+            <td><%= current_client.name %></td>
+            <td><%= current_client.name %></td>
+          </tr>
+          <tr><td>自己紹介文</td></tr>
+          <tr><td><%= current_client.introduction %></td></tr>
+        </tbody>
+      </table>
+      <%= link_to edit_client_path(@client.id) do %>
+        <button class = "btn btn-outline-secondary btn-block">
+          <i class = "プロフィール編集へ" ></i>
+        </button>
+      <% end %>
+    </div>
+
+  </div>
+</div>

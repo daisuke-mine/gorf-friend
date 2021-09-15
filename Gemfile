@@ -73,3 +73,6 @@ end
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
