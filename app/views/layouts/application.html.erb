@@ -13,7 +13,13 @@
     <header>
       <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class = "container">
-          <%= link_to "ゴルとも！", root_path, class: "navbar-brand" %>
+          <% if client_signed_in? %>
+            <%= link_to "ゴルとも！", clients_path, class: "navbar-brand" %>
+          <% elsif admin_signed_in? %>
+            <%= link_to "ゴルとも！", admins_clients_path, class: "navbar-brand" %>
+          <% else %>
+            <%= link_to "ゴルとも！", root_path, class: "navbar-brand" %>
+          <% end %>
           <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
               <% if client_signed_in? %>
@@ -28,6 +34,19 @@
                 </li>
                 <li>
                   <%= link_to "ログアウト", destroy_client_session_path, method: :delete, class: 'nav-link text-light mr-3' %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li>
+                 <%= link_to "ゴルフ場検索", root_path, class: 'nav-link text-light mr-3' %>
+                </li>
+                <li>
+                  <%= link_to "投稿一覧", admins_blogs_path, class: 'nav-link text-light mr-3'  %>
+                </li>
+                <li>
+                  <%= link_to "ユーザー一覧", admins_clients_path, class: 'nav-link text-light mr-3' %>
+                </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-light mr-3' %>
                 </li>
               <% else %>
                 <li>

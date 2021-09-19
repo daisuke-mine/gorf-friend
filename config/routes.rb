@@ -17,12 +17,11 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-   resources :blogs
-   resources :clients
+   resources :blogs, only: [:show,:index,:edit,:update]
+   resources :clients, only: [:show,:index,:edit,:update]
   end
-  
+
   scope module: "clients" do
-    root to: "clients#index"
     resources :clients, only: [:show,:index,:edit,:update] do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'

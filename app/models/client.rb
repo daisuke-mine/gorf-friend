@@ -2,11 +2,11 @@ class Client < ApplicationRecord
     # Include default devise modules. Others available are:
     # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
     has_one_attached :profile_image
-    has_many :brogs
+    has_many :blogs
     has_many :brog_comments
     has_many :sns_credentials, dependent: :destroy
-    
-    
+
+
     devise :database_authenticatable, :registerable,
            :recoverable, :rememberable, :validatable,
             # Omniauthを使用するためのオプション

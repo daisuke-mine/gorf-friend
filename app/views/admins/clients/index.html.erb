@@ -1,0 +1,36 @@
+<h1>会員一覧ページ</h1>
+  <div class="container bg-light text-dark">
+    <h4>▼会員一覧</h4>
+    <div class="p-3 mb-2 bg-white text-dark">
+      <div class="col-12">
+        <table class="table table table-striped">
+          <thead>
+            <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% @clients.each do |client| %>
+              <tr>
+                <td><%= client.id %></td>
+                <td><%= link_to client.name, admins_clients_path(client) %></td>
+                <td><%= client.email %></td>
+                <td>
+                  <% if client.client_status == false %>
+                    有効
+                  <% else %>
+                    退会
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+            <%= paginate @clients %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
