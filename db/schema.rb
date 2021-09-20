@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_083824) do
 
   create_table "blog_comments", force: :cascade do |t|
     t.integer "client_id"
-    t.integer "brog_id"
+    t.integer "blog_id"
     t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -81,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_083824) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "client_id"
-    t.integer "brog_id"
+    t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -96,10 +96,10 @@ ActiveRecord::Schema.define(version: 2021_09_12_083824) do
   create_table "sns_credentials", force: :cascade do |t|
     t.string "provider", null: false
     t.string "uid", null: false
-    t.integer "user_id", null: false
+    t.integer "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_sns_credentials_on_user_id"
+    t.index ["client_id"], name: "index_sns_credentials_on_client_id"
   end
 
 end

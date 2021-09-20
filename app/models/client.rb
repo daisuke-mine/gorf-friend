@@ -5,6 +5,7 @@ class Client < ApplicationRecord
     has_many :blogs
     has_many :brog_comments
     has_many :sns_credentials, dependent: :destroy
+    has_many :favorites, dependent: :destroy
 
 
     devise :database_authenticatable, :registerable,

@@ -11,19 +11,26 @@
         <div class="col-lg-3">
           <%= f.text_field :name,autoforcus: true, autocomplete: "name",  placeholder: "ゴルフ　太郎" %>
         </div>
-      </div>
+      </div><br>
 
       <div class="row">
         <label class="col-lg-3">フリガナ</label>
         <div class="col-lg-3">
            <%= f.text_field :kana_name,autoforcus: true, autocomplete: "kana_name",  placeholder: "ゴルフ　タロウ" %>
         </div>
-      </div>
+      </div><br>
 
       <div class="row">
         <label class="col-lg-3">年齢</label>
         <div class="col-lg-3">
-          <%= f.text_field :age, autofocus: true, autocomplete: "age" %>
+          <%= f.select :age,{'10代': "10代", '20代': "20代",'30代': "30代",'40代': "40代",'50代': "50代",'60代': "60代",'70代以上': "70代以上", }, { include_blank: '選択してください'} %>
+        </div>
+      </div><br>
+
+            <div class="row">
+        <label class="col-lg-3">性別</label>
+        <div class="col-lg-3">
+          <%= f.select :gender,{'男性': "男性", '女性': "女性"}, { include_blank: '選択してください'} %>
         </div>
       </div><br>
 

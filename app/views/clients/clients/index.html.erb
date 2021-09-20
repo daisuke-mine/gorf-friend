@@ -6,10 +6,8 @@
           <div class = "form-group">
             <%= form_with model: @blog, url: blogs_path, local:true do |f| %>
               <p>投稿画像</p>
-              <%= f.file_field :images %>
-              <p>Title</p>
-              <%= f.text_field :title %>
-              <p>Opinion</p>
+              <p><%= f.file_field :images %></p>
+              <p>投稿コメント</p>
               <%= f.text_area :body %>
               <%= f.submit "投稿する", class: 'btn btn-success' %>
             <% end %>
@@ -22,14 +20,14 @@
         <div class="twitter__block">
           <% @blogs.each do |blog| %>
             <figure>
-              <% if @client.profile_image.attached? %>
-                <%= image_tag @client.profile_image.variant(resize: '70x70') %>
+              <% if blog.client.profile_image.attached? %>
+                <%= image_tag blog.client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
               <% end %>
               <%= blog.client.name %>
             </figure>
             <div class="twitter__block-text">
               <div class="name">
-                
+
               </div>
               <div class="in-pict">
                 <% if blog.images.attached? %>
@@ -40,6 +38,16 @@
               <div class="text">
                 <%= blog.body %>
               </div>
+              
+              <% if blog.favorited_by?(current_client) %>
+                <%= link_to blog_favorites_path(blog), method: :delete, remote: true do %>
+                  ♥<%= blog.favorites.count %>
+                <% end %>
+              <% else %>
+                <%= link_to blog_favorites_path(blog), method: :post, remote: true do %>
+                  ♡<%= blog.favorites.count %>
+                <% end %>
+              <% end %>
             </div>
           <% end %>
         </div>
