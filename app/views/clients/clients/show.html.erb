@@ -33,6 +33,23 @@
         </button>
       <% end %>
     </div>
-
+  </div>
+  <div class = "row" >
+    <div class = "col-12" >
+      <div class="mx-auto" style="width: 200px;">
+        <% @blogs.each do |blog| %>
+          <figure>
+            <% if blog.client.profile_image.attached? %>
+              <%= image_tag blog.client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
+            <% end %>
+            <%= blog.client.name %>
+          </figure>
+          <% if blog.images.attached? %>
+            <%= image_tag blog.images[0].variant(resize: '300x400') %>
+          <% end %>
+          <%= blog.body %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>

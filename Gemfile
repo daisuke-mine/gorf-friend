@@ -83,3 +83,5 @@ gem 'rails-i18n', '~> 5.1'
 
 gem 'enum_help'
 gem 'kaminari','~> 1.2.1'
+
+gem 'rakuten_web_service'

@@ -27,7 +27,7 @@
                  <%= link_to "マイページ", client_path(current_client), class: 'nav-link text-light mr-3' %>
                 </li>
                 <li>
-                  <%= link_to "ゴルフ場検索", root_path, class: 'nav-link text-light mr-3'  %>
+                  <%= link_to "ゴルフ場検索", clients_rakuten_search_path, class: 'nav-link text-light mr-3'  %>
                 </li>
                 <li>
                   <%= link_to "ユーザー検索", root_path, class: 'nav-link text-light mr-3' %>
@@ -64,26 +64,28 @@
         </div>
       </nav>
     </header>
-    <% if flash[:notice] %>
-      <p><%= flash[:notice] %></p>
-    <% end %>
+    <main>
+      <% if flash[:notice] %>
+        <p><%= flash[:notice] %></p>
+      <% end %>
 
-    <% if flash[:alert] %>
-      <p><%= flash[:alert] %></p>
-    <% end %>
+      <% if flash[:alert] %>
+        <p><%= flash[:alert] %></p>
+      <% end %>
 
-
-
-    <%= yield %>
-
+      <%= yield %>
+    </main>
     <footer>
-      <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
-          <ul class="navbar-nav ml-auto">
-            <li><%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-light mr-3' %></li>
-          </ul>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <ul style= "list-style-type: none">
+              <li><%= link_to "お問い合わせ", clients_inquiry_index_path, class: 'nav-link text-light mr-3' %></li>
+              <li><%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-light mr-3' %></li>
+            </ul>
+          </div>
         </div>
-      </nav>
+      </div>
     </footer>
   </body>
 </html>

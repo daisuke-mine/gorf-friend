@@ -11,6 +11,7 @@ class Clients::ClientsController < ApplicationController
 
   def show
     @client = Client.find(params[:id])
+    @blogs = @client.blogs.all
 
   end
 
