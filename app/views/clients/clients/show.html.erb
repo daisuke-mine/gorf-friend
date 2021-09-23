@@ -20,8 +20,8 @@
           <tr><td><%= current_client.name %></td></tr>
           <tr>
             <td><%= current_client.name %></td>
-            <td><%= current_client.name %></td> <!--フォロワー数を表示予定-->
-            <td><%= current_client.name %></td> <!--フォロ中数を表示予定-->
+            <td>フォロー中: <%= link_to @client.followings.count, client_followings_path(@client) %></td>
+            <td>フォロワー数: <%= link_to @client.followers.count, client_followers_path(@client) %></td>
           </tr>
           <tr><td>自己紹介文</td></tr>
           <tr><td><%= current_client.introduction %></td></tr>
@@ -48,6 +48,10 @@
             <%= image_tag blog.images[0].variant(resize: '300x400') %>
           <% end %>
           <%= blog.body %>
+          <div id = "favorite-btn-<%= blog.id %>">
+            <%= render "clients/favorites/favorite", blog: blog %>
+            <!--コメントカウントエラー %= blog.blog_comment.count %>-->
+          </div>
         <% end %>
       </div>
     </div>

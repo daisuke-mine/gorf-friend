@@ -73,19 +73,19 @@
         <p><%= flash[:alert] %></p>
       <% end %>
 
+
+
       <%= yield %>
     </main>
     <footer>
-      <div class="container mt-5">
-        <div class="row">
-          <div class="mx-auto">
-            <ul style= "list-style-type: none">
-              <li><%= link_to "お問い合わせ", clients_inquiry_index_path, class: 'nav-link text-light mr-3' %></li>
-              <li><%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-light mr-3' %></li>
-            </ul>
-          </div>
+      <nav class ="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="navbar-collapse collapse show" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <%= link_to "お問い合わせ", clients_inquiry_index_path, class: 'nav-link text-light mr-3' %>
+            <%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-light mr-3' %>
+          </ul>
         </div>
-      </div>
+      </nav>
     </footer>
   </body>
 </html>

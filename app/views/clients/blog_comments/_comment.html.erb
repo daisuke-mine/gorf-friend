@@ -1,0 +1,4 @@
+  <%= form_with model:[blog_find, blog_comment], local: true do |f| %>
+    <%= f.text_area:comment.rows:"5",placeholder:"コメントを書く" %>
+    <%= f.submit "コメントする" %>
+  <% end %>

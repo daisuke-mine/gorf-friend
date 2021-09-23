@@ -3,6 +3,11 @@ class Clients::BlogsController < ApplicationController
   def index
   end
 
+  def show
+    @blog = Blog.find(params[:id])
+    @comment = BlogComment.all
+  end
+
   def create
     @blog = Blog.new(blog_params)
     @blog.client_id = current_client.id

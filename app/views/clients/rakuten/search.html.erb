@@ -15,14 +15,14 @@
           <% if @golf_courses.present? %>
             <% @golf_courses.each do |golf_course| %>
             <tr>
-              <td rowspan="3">
+              <td rowspan="2">
                 <!--ゴルフ場画像-->
                  <%= image_tag golf_course.golf_course_image_url, style: "object-fit: cover; width: auto; height: 190px;" %>
               </td>
               <td>
                 <!--ゴルフコース名-->
                 <%= link_to golf_course.golf_course_name, golf_course.golf_course_detail_url %>
-                <%= golf_course.address %>
+                <!--%= golf_course.address %>-->
               </td>
             </tr>
             <tr>
@@ -37,7 +37,7 @@
             </tr>
             <% end %>
           <% end %>
+        </table>
         </div>
       </div>
-    </div>
   </div>

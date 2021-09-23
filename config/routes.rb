@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     end
     resources :blogs do
      resource :favorites, only:[:create, :destroy]
-     resources :blog_comment, only: [:create, :destroy]
+     resources :blog_comments, only: [:create, :destroy]
     end
     get 'inquiry/index'
     post 'inquiry/confirm'

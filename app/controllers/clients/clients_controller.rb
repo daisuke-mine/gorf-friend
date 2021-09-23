@@ -5,6 +5,8 @@ class Clients::ClientsController < ApplicationController
     @clients = Client.all
     @blog = Blog.new
     @blogs = Blog.all
+    # @blog_find = Blog.find(params[:id])
+    @blog_comment = BlogComment.all
 
 
   end
@@ -12,6 +14,7 @@ class Clients::ClientsController < ApplicationController
   def show
     @client = Client.find(params[:id])
     @blogs = @client.blogs.all
+    @blog_all = Blog.all
 
   end
 
