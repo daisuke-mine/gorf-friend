@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   end
 
   scope module: "clients" do
-    resources :clients, only: [:show,:index,:edit,:update] do
+    resources :clients, only: [:new,:show,:index,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
       get 'followings' => 'relationships#followings', as: 'followings'
       get 'followers' => 'relationships#followers', as: 'followers'

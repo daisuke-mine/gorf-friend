@@ -16,13 +16,13 @@
           <%= @blog.body %>
         </div>
         <div id = "favorite-btn- <%= @blog.id %>">
-          <%= render "clients/favorites/favorite", blog: @blog %>
-          <!--コメントカウントエラー %= blog.blog_comment.count %>-->
+          <%= render "clients/favorites/favorite", blog: @blog %>&nbsp;
+          コメント数:<%= @blog.blog_comments.count %>件
         </div>
       </div>
 
       <div class="col-6">
-        <% @comment.each do |f| %>
+        <% @blog.blog_comments.each do |f| %>
           <table class = "table">
             <tr>
               <th scope = "col"></th>

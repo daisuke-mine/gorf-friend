@@ -1,4 +1,4 @@
-class Clients::RelationshipController < ApplicationController
+class Clients::RelationshipsController < ApplicationController
 
   # ——————フォロー機能を作成・保存・削除する————————————
   def create

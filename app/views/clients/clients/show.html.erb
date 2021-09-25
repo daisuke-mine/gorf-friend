@@ -1,59 +1,82 @@
-<div class = "container">
-  <div class = "row" >
+  <div class = "container">
+    <div class = "row" >
+      <div class = "col-md-3" >
+        <div class = "rounded-circle">
+          <% if @client.profile_image.attached? %>
+            <%= image_tag @client.profile_image.variant(resize: '300x300'), class: "rounded-circle" %> <br>
+          <% else %>
+            <%= image_tag "no_image.jpg"%>
+          <% end %>
+        </div>
+        <div>
+            <%= render "clients/relationships/follow", client: @client %>
+        </div>
+      </div>
 
-    <div class = "col-md-3" >
-      <div class = "rounded-circle">
-        <% if @client.profile_image.attached? %>
-          <%= image_tag @client.profile_image.variant(resize: '300x300'), class: "rounded-circle" %> <br>
-        <% else %>
-          <%= image_tag "no_image.jpg"%>
+      <div class = "col-md-9" >
+        <table cellpadding="20">
+          <thead>
+            <tr><th></th></th></tr>
+          </thead>
+          <tbody>
+            <tr><td></td></tr>
+            <tr>
+              <td><%= current_client.name %></td>
+              <td>フォロー中: <%= link_to @client.followings.count, client_followings_path(@client) %></td>
+              <td>フォロワー数: <%= link_to @client.followers.count, client_followers_path(@client) %></td>
+            </tr>
+            <tr><td>
+              自己紹介文<br>
+              <%= current_client.introduction %>
+            </td></tr>
+          </tbody>
+        </table>
+        <%= link_to edit_client_path(@client.id) do %>
+          <button class = "btn btn-outline-secondary">
+            <i>プロフィール編集へ</i>
+          </button>
         <% end %>
       </div>
     </div>
-
-    <div class = "col-md-9" >
-      <table cellpadding="20">
-        <thead>
-          <tr><th></th></th></tr>
-        </thead>
-        <tbody>
-          <tr><td><%= current_client.name %></td></tr>
-          <tr>
-            <td><%= current_client.name %></td>
-            <td>フォロー中: <%= link_to @client.followings.count, client_followings_path(@client) %></td>
-            <td>フォロワー数: <%= link_to @client.followers.count, client_followers_path(@client) %></td>
-          </tr>
-          <tr><td>自己紹介文</td></tr>
-          <tr><td><%= current_client.introduction %></td></tr>
-        </tbody>
-      </table>
-      <%= link_to edit_client_path(@client.id) do %>
-        <button class = "btn btn-outline-secondary">
-          <i>プロフィール編集へ</i>
-        </button>
+  </div>
+  <div class = "container">
+    <div class = "row" >
+      <h2 style = "center">投稿一覧</h2>
+    </div>
+    <div class = "row" >
+      <% @blogs.each do |blog| %>
+        <div class = "col-md-4">
+          <div class = "card-deck">
+            <div class = "card-body text-center">
+              <div class = "card-name text-left">
+                <% if blog.client.profile_image.attached? %>
+                  <%= image_tag blog.client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
+                <% end %>
+                <%= blog.client.name %>
+              </div>
+              <div class = "card-image">
+                <% if blog.images.attached? %>
+                  <%= image_tag blog.images[0].variant(resize: '350x400') %>
+                <% end %>
+              </div>
+              <div class = "card-body">
+                <%= blog.body %>
+              </div>
+              <div class = "card-favorites">
+                <div id = "favorite-btn-<%= blog.id %>">
+                  <%= render "clients/favorites/favorite", blog: blog %>&nbsp;
+                  コメント数:<%= blog.blog_comments.count %>件
+                </div>
+              </div>
+              <div class = "card-comment">
+                <%= form_with model:[blog, @blog_comment],url: blog_blog_comments_path(blog), local: true do |f| %>
+                  <%= f.text_area:comment,placeholder:"コメントを書く" %>
+                  <%= f.submit "コメントする" %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
-  <div class = "row" >
-    <div class = "col-12" >
-      <div class="mx-auto" style="width: 200px;">
-        <% @blogs.each do |blog| %>
-          <figure>
-            <% if blog.client.profile_image.attached? %>
-              <%= image_tag blog.client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
-            <% end %>
-            <%= blog.client.name %>
-          </figure>
-          <% if blog.images.attached? %>
-            <%= image_tag blog.images[0].variant(resize: '300x400') %>
-          <% end %>
-          <%= blog.body %>
-          <div id = "favorite-btn-<%= blog.id %>">
-            <%= render "clients/favorites/favorite", blog: blog %>
-            <!--コメントカウントエラー %= blog.blog_comment.count %>-->
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
-</div>

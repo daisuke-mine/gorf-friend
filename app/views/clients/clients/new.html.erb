@@ -1,0 +1,34 @@
+  <div class="container bg-light text-dark">
+    <h4>▼ゴルとも！メンバー</h4>
+    <div class="p-3 mb-2 bg-white text-dark">
+      <div class="col-12">
+        <table class="table table table-striped">
+          <thead>
+            <tr>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @clients.each do |client| %>
+              <tr>
+                <td>
+                  <% if client.profile_image.attached? %>
+                    <%= image_tag client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %> <br>
+                  <% else %>
+                    <%= image_tag "no_image.jpg"%>
+                  <% end %>
+                </td>
+                <td><%= link_to client.name %></td>
+                <td><%= client.introduction %></td>
+                <td>フォロー中:<%= client.followings.count %></td>
+                <td>フォロワー数:<%= client.followers.count %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

@@ -11,30 +11,34 @@
     <div class ="row">
       <div class = "col">
         <h2>検索結果</h2>
-        <table border="1">
+        <table class = "table">
           <% if @golf_courses.present? %>
             <% @golf_courses.each do |golf_course| %>
-            <tr>
-              <td rowspan="2">
-                <!--ゴルフ場画像-->
-                 <%= image_tag golf_course.golf_course_image_url, style: "object-fit: cover; width: auto; height: 190px;" %>
-              </td>
-              <td>
-                <!--ゴルフコース名-->
-                <%= link_to golf_course.golf_course_name, golf_course.golf_course_detail_url %>
-                <!--%= golf_course.address %>-->
-              </td>
-            </tr>
-            <tr>
-              <td>
-                <!--ゴルフコース住所-->
-                <%= golf_course.address %>
-              </td>
-              <td>
-                <!--ゴルフコース説明-->
-                <%= golf_course.golf_course_caption %>
-              </td>
-            </tr>
+              <tr>
+                <th></th><th></th>
+              </tr>
+              <tr>
+                <td rowspan = "3">
+                  <!--ゴルフ場画像-->
+                   <%= image_tag golf_course.golf_course_image_url, style: "object-fit: cover; width: auto; height: 190px;" %>
+                </td>
+                <td >
+                  <!--ゴルフコース名-->
+                  <%= link_to golf_course.golf_course_name, golf_course.golf_course_detail_url %>
+                  <!--%= golf_course.address %>-->
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <!--ゴルフコース住所-->
+                  <%= golf_course.address %>
+                </td>
+              </tr>
+                <td>
+                  <!--ゴルフコース説明-->
+                  <%= golf_course.golf_course_caption %>
+                </td>
+              </tr>
             <% end %>
           <% end %>
         </table>

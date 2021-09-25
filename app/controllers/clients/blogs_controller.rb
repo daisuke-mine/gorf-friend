@@ -6,6 +6,7 @@ class Clients::BlogsController < ApplicationController
   def show
     @blog = Blog.find(params[:id])
     @comment = BlogComment.all
+
   end
 
   def create

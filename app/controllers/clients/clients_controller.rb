@@ -7,14 +7,17 @@ class Clients::ClientsController < ApplicationController
     @blogs = Blog.all
     # @blog_find = Blog.find(params[:id])
     @blog_comment = BlogComment.all
-
-
+  end
+  
+  def new
+    @clients = Client.all
   end
 
   def show
     @client = Client.find(params[:id])
     @blogs = @client.blogs.all
     @blog_all = Blog.all
+    @blog_comment = BlogComment.all
 
   end
 

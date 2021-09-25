@@ -15,7 +15,7 @@
               <% @client.each do |client| %>
                 <tr>
                   <td>
-                    <% if blog.client.profile_image.attached? %>
+                    <% if client.profile_image.attached? %>
                       <%= image_tag client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
                     <% end %>
                   </td>

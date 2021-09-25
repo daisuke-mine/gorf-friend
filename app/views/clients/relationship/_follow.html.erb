@@ -1,5 +1,0 @@
-<% if current_client.following?(client) %>
-  <%= link_to "Unfollow", client_relationships_path(client.id), method: :delete %>
-<% else %>
-  <%= link_to "Follow", client_relationships_path(client.id), method: :post %>
-<% end %>

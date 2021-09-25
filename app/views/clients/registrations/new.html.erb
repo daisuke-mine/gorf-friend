@@ -66,12 +66,14 @@
 
       <br></br>
       <h3>既に登録済みの方</h3>
-      <div class="col-sm-3">
-        <%- if controller_name != 'sessions' %>
-          <%= link_to "こちら", new_session_path(resource_name), class: "moe-btn" %>
-        <% end %>
-        からログインしてください
-      </div>
+      <div class="col">
+        <p class = "login">
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "こちら", new_session_path(resource_name), class: "moe-btn" %>
+          <% end %>
+          からログインしてください
+        </p>
+      </div><br>
     <% end %>
     <%= render "clients/shared/links" %>
   </div>

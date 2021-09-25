@@ -15,3 +15,23 @@
  */
  @import "bootstrap";
 
+  .main-visual {
+    width: 100%; /* 横幅いっぱい */
+    height: 500px; /* 高さ300px */
+    background-image: image-url("sample3.jpg");
+    background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+    background-position: center; /* 背景画像を中央に配置 */
+  }
+
+  .main-visual2 {
+    width: 100%; /* 横幅いっぱい */
+    height: 700px; /* 高さ */
+    background-image: image-url("sample3.jpg");
+    background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
+    background-position: center; /* 背景画像を中央に配置 */
+  }
+
+  .login {
+    width: 100%;
+    padding-left: 150px;
+  }
