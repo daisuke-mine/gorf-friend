@@ -35,7 +35,7 @@ class DeviseCreateClients < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :kana_name
       t.boolean :client_status, default: false, null: false
-      t.string :gender, default: false, null: false
+      t.string :gender
       t.string :age
       t.string :introduction
 
