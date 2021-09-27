@@ -4,11 +4,12 @@
     <title>GolfFriends</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/846ce04829.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
@@ -16,11 +17,13 @@
       <nav class ="navbar navbar-expand-lg navbar-dark bg-white" style = "text-black">
         <div class = "container">
           <% if client_signed_in? %>
-            <%= link_to "ゴルとも！", clients_path, class: "nav-link text-dark" %>
+            <%= link_to clients_path do %>
+              <%= image_tag "golffriend_rogo.jpg", style: "object-fit: cover; width: auto; height: 80px;" %>
+            <% end %>
+
           <% elsif admin_signed_in? %>
             <%= link_to "ゴルとも！", admins_clients_path, class: "nav-link text-dark" %>
           <% else %>
-            <%= link_to "ゴルとも！", root_path, class: "nav-link text-dark" %>
           <% end %>
           <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
             <ul class="navbar-nav ml-auto">
@@ -51,12 +54,6 @@
                   <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark mr-3' %>
                 </li>
               <% else %>
-                <li>
-                  <%= link_to "新規登録", new_client_registration_path, class: 'nav-link text-dark mr-3' %>
-                </li>
-                <li>
-                  <%= link_to "ログイン", new_client_session_path, class: 'nav-link text-dark mr-3'  %>
-                </li>
               <% end %>
             </ul>
           </div>
@@ -77,14 +74,20 @@
       <%= yield %>
     </main>
     <footer>
-      <nav class ="navbar navbar-expand-lg navbar-dark bg-white">
-        <div class="navbar-collapse collapse show" id="navbarNavDropdown">
-          <ul class="navbar-nav ml-auto" style = "center">
-            <%= link_to "お問い合わせ", clients_inquiry_index_path, class: 'nav-link text-dark mr-3' %>
-            <%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-dark mr-3' %>
-          </ul>
+      <div class = "container">
+        <div class = "row">
+          <div class = "col-12">
+            <div class = "text-center">
+              <p style = "display: inline-block;">
+                <%= link_to "お問い合わせ", clients_inquiry_index_path, class: 'nav-link text-dark mr-3' %>
+              </p>
+              <p style = "display: inline-block;">
+                <%= link_to "プライバシーポリシー", home_index_path, class: 'nav-link text-dark mr-3' %>
+              </p>
+            </div>
+          </div>
         </div>
-      </nav>
+      </div>
     </footer>
   </body>
 </html>

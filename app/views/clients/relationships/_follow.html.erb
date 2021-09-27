@@ -1,5 +1,5 @@
 <% if current_client.following?(client) %>
-  <%= link_to "フォローを外す", client_relationships_path(client.id), method: :delete %>
+  <%= link_to "フォローを外す", client_relationships_path(client.id), method: :delete, class: "button-3 btn btn-outline-danger" %>
 <% else %>
-  <%= link_to "フォローする", client_relationships_path(client.id), method: :post %>
+  <%= link_to "フォローする", client_relationships_path(client.id), method: :post, class: "button-3 btn btn-outline-primary" %>
 <% end %>

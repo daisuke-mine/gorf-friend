@@ -1,5 +1,7 @@
 class Clients::BlogCommentsController < ApplicationController
 
+  before_action :authenticate_client!
+
   def create
     @blog_comment = Blog.find(params[:blog_id])
     comment = BlogComment.new(blog_comment_params)

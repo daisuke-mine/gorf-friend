@@ -2,10 +2,38 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-  .main-visual {
+  .new-book-create {
     width: 100%; /* 横幅いっぱい */
     height: 500px; /* 高さ300px */
-    background-image: image-url("sample3.jpg");
+    padding-top: 30px;
     background-size: cover; /* 縦横比を維持したまま背景領域を埋め尽くす */
     background-position: center; /* 背景画像を中央に配置 */
-    }
+  }
+
+  .circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .circle2 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+  }
+
+  .card-1 {
+    width: 100%;
+    margin-left: 50px;
+    margin-bottom: 40px;
+  }
+
+  .profile {
+   background-image: image-url("profile.jpg");
+   background-size: contain;
+   background-color: rgba(0,0,0,0.9);
+  }
+
+  .client-info {
+    
+  }

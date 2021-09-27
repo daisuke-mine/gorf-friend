@@ -16,12 +16,12 @@
               <tr>
                 <td>
                   <% if client.profile_image.attached? %>
-                    <%= image_tag client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %> <br>
+                    <%= image_tag client.profile_image.variant(resize: '70x70'), class: "circle" %> <br>
                   <% else %>
-                    <%= image_tag "no_image.jpg"%>
+                    <%= image_tag "no_image.jpg", class: "circle"%>
                   <% end %>
                 </td>
-                <td><%= link_to client.name %></td>
+                <td><%= link_to client.name, client_path(client.id)%></td>
                 <td><%= client.introduction %></td>
                 <td>フォロー中:<%= client.followings.count %></td>
                 <td>フォロワー数:<%= client.followers.count %></td>

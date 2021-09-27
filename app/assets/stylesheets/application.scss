@@ -15,6 +15,11 @@
  */
  @import "bootstrap";
 
+  footer {
+    margin-top: 60px;
+    bottom: 0;
+  }
+
   .main-visual {
     width: 100%; /* 横幅いっぱい */
     height: 500px; /* 高さ300px */
@@ -34,4 +39,28 @@
   .login {
     width: 100%;
     padding-left: 150px;
+  }
+
+  .button {
+    width: 460px;
+  }
+
+  .button-2 {
+    width: 360px;
+  }
+
+  .button-3 {
+    width: 150px;
+    border-radius: 100vh;
+    margin-left: 25px;
+    margin-bottom: 20px;
+  }
+
+  .client-name {
+    margin-left: 10px;
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+  }
+
+  .blog-text {
+    text-align: left;
   }

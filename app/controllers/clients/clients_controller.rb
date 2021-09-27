@@ -1,4 +1,6 @@
 class Clients::ClientsController < ApplicationController
+  
+  before_action :authenticate_client!
 
   def index
     @client = current_client
@@ -8,7 +10,7 @@ class Clients::ClientsController < ApplicationController
     # @blog_find = Blog.find(params[:id])
     @blog_comment = BlogComment.all
   end
-  
+
   def new
     @clients = Client.all
   end

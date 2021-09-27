@@ -1,4 +1,6 @@
 class Clients::RelationshipsController < ApplicationController
+  
+  before_action :authenticate_client!
 
   # ——————フォロー機能を作成・保存・削除する————————————
   def create

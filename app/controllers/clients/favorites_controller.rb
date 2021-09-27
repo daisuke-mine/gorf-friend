@@ -1,4 +1,6 @@
 class Clients::FavoritesController < ApplicationController
+  
+  before_action :authenticate_client!
 
   def create
     @blog = Blog.find(params[:blog_id])
