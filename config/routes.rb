@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  root to: "homes#top"
   namespace :clients do
     get 'rakuten/search'
   end
@@ -8,7 +9,7 @@ Rails.application.routes.draw do
     get 'inquiry/confirm'
     get 'inquiry/thanks'
   end
-  root to: "homes#top"
+
   get "home/index" => "homes#index"
 
   devise_for :clients, controllers: {
