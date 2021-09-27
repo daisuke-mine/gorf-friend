@@ -1,11 +1,20 @@
 Rails.application.routes.draw do
 
+  namespace :clients do
+    get 'rakuten/search'
+  end
+  namespace :clients do
+    get 'inquiry/index'
+    get 'inquiry/confirm'
+    get 'inquiry/thanks'
+  end
   root to: "homes#top"
   get "home/index" => "homes#index"
 
   devise_for :clients, controllers: {
     sessions:      'clients/sessions',
     passwords:     'clients/passwords',
+    omniauth_callbacks: 'clients/omniauth_callbacks',
     registrations: 'clients/registrations'
   }
 
@@ -16,13 +25,23 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    get 'admins/index'
-    get 'admins/new'
-    get 'admins/create'
-    get 'admins/edit'
-    get 'admins/show'
-    get 'admins/update'
-    get 'admins/destroy'
+   resources :blogs, only: [:show,:index,:edit,:update]
+   resources :clients, only: [:show,:index,:edit,:update]
+  end
+
+  scope module: "clients" do
+    resources :clients, only: [:new,:show,:index,:edit,:update] do
+      resource :relationships, only: [:create, :destroy]
+      get 'followings' => 'relationships#followings', as: 'followings'
+      get 'followers' => 'relationships#followers', as: 'followers'
+    end
+    resources :blogs do
+     resource :favorites, only:[:create, :destroy]
+     resources :blog_comments, only: [:create, :destroy]
+    end
+    get 'inquiry/index'
+    post 'inquiry/confirm'
+    post 'inquiry/thanks'
   end
 
 end

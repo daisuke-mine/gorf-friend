@@ -1,0 +1,72 @@
+  <div class = "container px-5 px-sm-0">
+    <div class = "row">
+      <div class = "col-md-4">
+        <div class = "new-book-create" >
+          <div class = "form-group">
+            <%= form_with model: @blog, url: blogs_path, local:true do |f| %>
+              <p>投稿画像を選択してください<%= f.file_field :images %></p>
+              <p>投稿コメント
+                <%= f.text_area :body, size: "20x10", class: "form-control"%>
+              </p>
+              <%= f.submit "投稿する", class: 'button-2 btn btn-outline-success' %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class = "col-md-8">
+        <% @blogs.each do |blog| %>
+          <div class = "card mt-5 mx-5">
+            <div class = "card-header">
+              <div class = "client-name">
+                <% if blog.client.profile_image.attached? %>
+                  <%= image_tag blog.client.profile_image.variant(resize: '60x60'), class: "circle"  %>
+                <% end %>
+                <%= link_to blog.client.name, client_path(blog.client.id), class: "client-name" %>
+              </div>
+            </div>
+            <div class = "row">
+              <div class = "col-4">
+                <div class = "card-img-top">
+                  <% if blog.images.attached? %>
+                    <%= link_to blog_path(blog.id) do %>
+                      <%= image_tag blog.images[0].variant(resize: '300x400') %>
+                    <% end %>
+                  <% end %>
+                </div>
+              </div>
+              <div class = "col-8">
+                <div class = "card-body">
+                  <div class = "card-text">
+                    <div class = "blog-text"><%= blog.body %></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class = "card-footer">
+              <div class = "row">
+                <div class = "col-3">
+                  <div>
+                    <%= blog.created_at.strftime('%Y/%m/%d') %>
+                  </div>
+                  <div id = "favorite-btn-<%= blog.id %>">
+                    <%= render "clients/favorites/favorite", blog: blog %>
+                  </div>
+                  <div class = "comment-count">
+                    <%= render "clients/blog_comments/comment", blog: blog %>
+                  </div>
+                </div>
+                <div class = "col-9">
+                  <div class = "comment">
+                    <%= form_with model:[blog, @blog_comment],url: blog_blog_comments_path(blog), local: true do |f| %>
+                      <%= f.text_area:comment, placeholder:"コメントを書く", size: "55x0" %>
+                      <%= f.submit "コメント送信", class: "button btn btn-outline-success" %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>

@@ -67,9 +67,21 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'image_processing', '~> 1.2'
 gem 'dotenv-rails'
+
 group :production do
   gem 'mysql2'
 end
+
+gem "omniauth-rails_csrf_protection"
 gem 'omniauth-twitter'
 gem 'omniauth-facebook'
 gem 'dotenv-rails'
+
+gem 'bootstrap', '~> 4.5'
+gem 'jquery-rails'
+gem 'rails-i18n', '~> 5.1'
+
+gem 'enum_help'
+gem 'kaminari','~> 1.2.1'
+
+gem 'rakuten_web_service'
