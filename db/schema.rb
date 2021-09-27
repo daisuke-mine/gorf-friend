@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2021_09_12_083824) do
     t.string "name"
     t.string "kana_name"
     t.boolean "client_status", default: false, null: false
-    t.boolean "gender", default: false, null: false
+    t.string "gender", default: "f", null: false
     t.string "age"
     t.string "introduction"
     t.datetime "created_at", null: false
