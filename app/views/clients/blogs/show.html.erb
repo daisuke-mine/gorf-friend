@@ -1,0 +1,48 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-6">
+        <figure>
+          <% if @blog.client.profile_image.attached? %>
+            <%= image_tag @blog.client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
+          <% end %>
+          <%= link_to @blog.client.name, client_path(@blog.client.id) %>
+        </figure>
+        <div>
+          <% if @blog.images.attached? %>
+            <%= image_tag @blog.images[0].variant(resize: '300x400') %>
+          <% end %>
+        </div>
+        <div>
+          <%= @blog.body %>
+        </div>
+        <div id = "favorite-btn- <%= @blog.id %>">
+          <%= render "clients/favorites/favorite", blog: @blog %>&nbsp;
+          コメント数:<%= @blog.blog_comments.count %>件
+        </div>
+      </div>
+
+      <div class="col-6">
+        <% @blog.blog_comments.each do |f| %>
+          <table class = "table">
+            <tr>
+              <th scope = "col"></th>
+              <th scope = "col"></th>
+            </tr>
+            <tr>
+              <td scope = "row">
+                <% if f.client.profile_image.attached? %>
+                  <%= image_tag f.client.profile_image.variant(resize: '70x70'), class: "rounded-circle" %>
+                <% end %>
+                <%= link_to f.client.name, client_path(f.client.id)%>
+              </td>
+              <td scope = "row">
+                <%= f.comment%>
+              </td>
+            </tr>
+          </table>
+        <% end %>
+      </div>
+
+
+    </div>
+  </div>

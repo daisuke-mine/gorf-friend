@@ -1,7 +1,35 @@
 # frozen_string_literal: true
 
 class Clients::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  # You should configure your model like this:
+
+  # def facebook
+  #   callback_for(:facebook)
+  # end
+
+  def google_oauth2
+    callback_for(:google)
+  end
+
+
+  def callback_for(provider)
+    @omniauth = request.env['omniauth.auth']
+    info = Client.find_oauth(@omniauth)
+    @client = info[:client]
+    # binding.pry
+    if @client.persisted?
+      sign_in_and_redirect @client, event: :authentication
+      set_flash_message(:notice, :success, kind: "#{provider}".capitalize) if is_navigational_format?
+    else
+      @sns = info[:sns]
+      render "devise/registrations/new"
+    end
+  end
+
+  def failure
+    redirect_to root_path and return
+  end
+
+    # You should configure your model like this:
   # devise :omniauthable, omniauth_providers: [:twitter]
 
   # You should also create an action method in this controller like this:
@@ -27,4 +55,5 @@ class Clients::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # def after_omniauth_failure_path_for(scope)
   #   super(scope)
   # end
+
 end

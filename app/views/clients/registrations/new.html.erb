@@ -1,29 +1,86 @@
-<h2>Sign up</h2>
+<div class="container">
+    <br></br>
+    <h2>新規会員登録</h2>
+    <br></br>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "clients/shared/error_messages", resource: resource %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "clients/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <div class="row">
+        <label class ="col-lg-3">お名前</label>
+        <div class="col-lg-3">
+          <%= f.text_field :name,autoforcus: true, autocomplete: "name",  placeholder: "ゴルフ　太郎" %>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <label class="col-lg-3">フリガナ</label>
+        <div class="col-lg-3">
+           <%= f.text_field :kana_name,autoforcus: true, autocomplete: "kana_name",  placeholder: "ゴルフ　タロウ" %>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <label class="col-lg-3">年齢</label>
+        <div class="col-lg-3">
+          <%= f.select :age,{'10代': "10代", '20代': "20代",'30代': "30代",'40代': "40代",'50代': "50代",'60代': "60代",'70代以上': "70代以上", }, { include_blank: '選択してください'} %>
+        </div>
+      </div><br>
+
+            <div class="row">
+        <label class="col-lg-3">性別</label>
+        <div class="col-lg-3">
+          <%= f.select :gender,{'男性': "男性", '女性': "女性"}, { include_blank: '選択してください'} %>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <label class="col-lg-3">メールアドレス</label>
+        <div class="col-lg-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example.com" %>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <label class="col-lg-3">パスワード
+        <% if @minimum_password_length %>
+          <em>(<%= @minimum_password_length %>文字以上)</em>
+        <% end %></label>
+        <div class="col-lg-3">
+          <%= f.password_field :password, autocomplete: "encrypted_password" %>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <label class="col-lg-3">パスワード（確認用）</label>
+        <div class="col-lg-3">
+          <%= f.password_field :password_confirmation, autocomplete: "encrypted_password" %>
+        </div>
+      </div><br>
+
+      <div class="row">
+        <div class="col-lg-6">
+          <%= f.submit "新規登録", class: "moe-btn" %>
+        </div>
+      </div>
+
+      <br></br>
+      <h3>既に登録済みの方</h3>
+      <div class="col">
+        <p class = "login">
+          <%- if controller_name != 'sessions' %>
+            <%= link_to "こちら", new_session_path(resource_name), class: "moe-btn" %>
+          <% end %>
+          からログインしてください
+        </p>
+      </div><br>
+    <% end %>
+    <%- if devise_mapping.omniauthable? %>
+      <%- resource_class.omniauth_providers.each do |provider| %>
+        <%= link_to "グーグルアカウントでログイン", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+      <% end %>
+    <% end %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "clients/shared/links" %>

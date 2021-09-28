@@ -1,0 +1,2 @@
+module Clients::RakutenHelper
+end

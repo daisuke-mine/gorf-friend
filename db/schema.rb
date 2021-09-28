@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_08_092731) do
+ActiveRecord::Schema.define(version: 2021_09_12_083824) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -45,18 +45,18 @@ ActiveRecord::Schema.define(version: 2021_09_08_092731) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "blogs", force: :cascade do |t|
+  create_table "blog_comments", force: :cascade do |t|
     t.integer "client_id"
-    t.string "title"
-    t.text "body"
+    t.integer "blog_id"
+    t.text "comment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "brog_comments", force: :cascade do |t|
+  create_table "blogs", force: :cascade do |t|
     t.integer "client_id"
-    t.integer "brog_id"
-    t.text "comment"
+    t.string "title"
+    t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -70,8 +70,9 @@ ActiveRecord::Schema.define(version: 2021_09_08_092731) do
     t.string "name"
     t.string "kana_name"
     t.boolean "client_status", default: false, null: false
-    t.boolean "gender", default: false, null: false
+    t.string "gender"
     t.string "age"
+    t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_clients_on_email", unique: true
@@ -80,7 +81,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_092731) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "client_id"
-    t.integer "brog_id"
+    t.integer "blog_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -90,6 +91,15 @@ ActiveRecord::Schema.define(version: 2021_09_08_092731) do
     t.integer "followed_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "sns_credentials", force: :cascade do |t|
+    t.string "provider", null: false
+    t.string "uid", null: false
+    t.integer "client_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_sns_credentials_on_client_id"
   end
 
 end
