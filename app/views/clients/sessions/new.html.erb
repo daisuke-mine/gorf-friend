@@ -7,32 +7,36 @@
         <br></br>
 
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="row">
-          <label class="col-md-2">メールアドレス</label>
-          <div class="field">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"60",  placeholder: "sample@example.com" %>
+          <div class="row">
+            <label class="col-md-2">メールアドレス</label>
+            <div class="field">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"60",  placeholder: "sample@example.com" %>
+            </div>
           </div>
-        </div>
 
-        <div class="row">
-          <label class="col-md-2">パスワード</label>
-          <div class="field">
-            <%= f.password_field :password, autocomplete: "current-password", :size=>"60" %>
+          <div class="row">
+            <label class="col-md-2">パスワード</label>
+            <div class="field">
+              <%= f.password_field :password, autocomplete: "current-password", :size=>"60" %>
+            </div>
           </div>
-        </div>
-        <br>
+          <br>
 
-        <div class = "login">
-          <%= f.submit "ログイン", class: "moe-btn" %>
-        </div>
+          <div class = "login">
+            <%= f.submit "ログイン", class: "moe-btn" %>
+          </div>
 
           <% end %>
-
+        <%- if devise_mapping.omniauthable? %>
+          <%- resource_class.omniauth_providers.each do |provider| %>
+            <%= link_to "グーグルアカウントでログイン", omniauth_authorize_path(resource_name, provider), method: :post %><br />
+          <% end %>
+        <% end %>
         <br></br>
         <br>
           <h3>登録がお済みでない方</h3>
           <p class = "login"><%= link_to "こちら", new_client_registration_path, class: "moe-btn" %>から新規登録をしてください</p><br>
-        <%= render "clients/shared/links" %>
+        <!--%= render "clients/shared/links" %>-->
       </div>
     </div>
   </div>
