@@ -12,8 +12,12 @@ class Clients::BlogCommentsController < ApplicationController
   end
 
   def destroy
-    @blog_comment = Blog.find(params[:id])
+    # binding.pry
     BlogComment.find_by(id: params[:id], blog_id: params[:blog_id]).destroy
+    @blog = Blog.find_by(params[:blog_id])
+    # redirect_to blog_path(@blog)
+    redirect_back(fallback_location: root_path)
+
   end
 
   private

@@ -1,5 +1,5 @@
 class Clients::BlogsController < ApplicationController
-  
+
   before_action :authenticate_client!
 
   def index
@@ -21,6 +21,11 @@ class Clients::BlogsController < ApplicationController
     end
   end
 
+    def destroy
+      @blog = Blog.find(params[:id])
+      @blog.destroy
+      redirect_to client_path(current_client.id)
+    end
 
   private
 
