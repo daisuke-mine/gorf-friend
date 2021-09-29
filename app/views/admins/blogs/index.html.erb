@@ -16,11 +16,10 @@
                 </div>
               </div>
               <div class = "col-2 mt-1">
-                  <%= link_to "強制削除", admins_blog_path(blog.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-outline-danger bottom-right" %>
+                <%= link_to "強制削除", admins_blog_path(blog.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-outline-danger bottom-right" %>
               </div>
             </div>
           </div>
-
           <div class = "row">
             <div class = "col-4">
               <div class = "card-img-top">
@@ -48,22 +47,21 @@
                 <div>
                   コメント数:&nbsp;<%= blog.blog_comments.count %>件
                 </div>
-                </div>
-                <div class = "col-9 text-right">
-                  <div class = "comment">
-                    <%= form_with model:[blog, @blog_comment],url: blog_blog_comments_path(blog), local: true do |f| %>
-                      <%= f.text_area:comment, placeholder:"コメントを書く", size: "55x0" %>
-                      <%= f.submit "コメント投稿工事中", class: "button btn btn-outline-success" %>
-                    <% end %>
-                  </div>
+              </div>
+              <div class = "col-9 text-right">
+                <div class = "comment">
+                  <%= form_with model:[blog, @blog_comment],url: blog_blog_comments_path(blog), local: true do |f| %>
+                    <%= f.text_area:comment, placeholder:"コメントを書く", size: "55x0" %>
+                    <%= f.submit "コメント投稿工事中", class: "button btn btn-outline-success" %>
+                  <% end %>
                 </div>
               </div>
             </div>
           </div>
         </div>
       <% end %>
-      <div class = "page mt-5">
-        <%= paginate @blogs %>
-      </div>
+    </div>
+    <div class = "page mt-5">
+      <%= paginate @blogs %>
     </div>
   </div>
