@@ -6,11 +6,12 @@
         <%= form_with model: @client, url: client_path, local:true do |f| %>
           <p>
             <% if @client.profile_image.attached? %>
-              <%= image_tag @client.profile_image.variant(resize: '300x300'), class: "rounded-circle" %> <br>
+              <%= image_tag @client.profile_image.variant(resize: '300x300'), class: "circle2" %> <br>
             <% else %>
               <%= image_tag "no_image.jpg"%>
             <% end %>
           </p>
+          <label>profile image</label>
           <p><%= f.file_field :profile_image %></p>
           <label>Name</label>
           <p> <%= f.text_field :name, autofocus: true %> </p>

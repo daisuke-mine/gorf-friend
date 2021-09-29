@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-   resources :blogs, only: [:show,:index,:edit,:update]
-   resources :clients, only: [:show,:index,:edit,:update]
+   resources :blogs, only: [:show,:index,:edit,:update,:destroy] do
+     resources :blog_comments, only: [:create, :destroy]
+    end
+   resources :clients, only: [:show,:index,:edit,:update,:destroy]
   end
 
   scope module: "clients" do
