@@ -10,6 +10,7 @@
               <th>氏名</th>
               <th>メールアドレス</th>
               <th>ステータス</th>
+              <th></th>
             </tr>
           </thead>
 
@@ -17,7 +18,14 @@
             <% @clients.each do |client| %>
               <tr>
                 <td><%= client.id %></td>
-                <td><%= link_to client.name, admins_clients_path(client) %></td>
+                <td>
+                  <% if client.profile_image.attached? %>
+                    <%= image_tag client.profile_image.variant(resize: '60x60'), class: "circle" %>
+                  <% else %>
+                    <%= image_tag "no_image.jpg", class: "circle"%>
+                  <% end %>
+                  <%= link_to client.name, admins_client_path(client.id), class: "client-name" %>
+                </td>
                 <td><%= client.email %></td>
                 <td>
                   <% if client.client_status == false %>
@@ -25,6 +33,9 @@
                   <% else %>
                     退会
                   <% end %>
+                </td>
+                <td>
+                  <%= link_to "強制削除", admins_client_path(client.id), method: :delete, data: {confirm: "本当に消しますか？"}, class:"btn btn-outline-danger bottom-right" %>
                 </td>
               </tr>
             <% end %>

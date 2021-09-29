@@ -22,7 +22,9 @@
             <% end %>
 
           <% elsif admin_signed_in? %>
-            <%= link_to "ゴルとも！", admins_clients_path, class: "nav-link text-dark" %>
+            <%= link_to admins_clients_path do %>
+              <%= image_tag "golffriend_rogo.jpg", style: "object-fit: cover; width: auto; height: 80px;" %>
+            <% end %>
           <% else %>
           <% end %>
           <div class="navbar-collapse collapse show" id="navbarNavDropdown" style>
@@ -42,7 +44,7 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li>
-                 <%= link_to "ゴルフ場検索", root_path, class: 'nav-link text-dark mr-3' %>
+                 <%= link_to "ゴルフ場検索", clients_rakuten_search_path, class: 'nav-link text-dark mr-3' %>
                 </li>
                 <li>
                   <%= link_to "投稿一覧", admins_blogs_path, class: 'nav-link text-dark mr-3'  %>
