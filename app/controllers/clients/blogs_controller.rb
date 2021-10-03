@@ -15,6 +15,15 @@ class Clients::BlogsController < ApplicationController
     @blog = Blog.new(blog_params)
     @blog.client_id = current_client.id
     if @blog.save
+      # binding.pry
+      @blog.images.each do |images|
+        tags = Vision.get_image_data(images)
+        if tags.present?
+          tags.each do |tag|
+            @blog.tags.create(name: tag)
+          end
+        end
+      end
       redirect_to clients_path
     else
       redirect_to clients_path
