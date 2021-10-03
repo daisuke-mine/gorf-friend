@@ -56,11 +56,16 @@
                   <div class = "comment-count">
                     <%= render "clients/blog_comments/comment", blog: blog %>
                   </div>
+                  <div class = "tags">
+                    <% blog.tags.each do |tag| %>
+                      <%= tag.name %>
+                    <% end %>
+                  </div>
                 </div>
                 <div class = "col-9">
                   <div class = "comment">
                     <%= form_with model:[blog, @blog_comment],url: blog_blog_comments_path(blog), local: true do |f| %>
-                      <%= f.text_area:comment, placeholder:"コメントを書く", size: "55x0" %>
+                      <%= f.text_area:comment, placeholder:"コメントを書く", size: "50x0" %>
                       <%= f.submit "コメント送信", class: "button btn btn-outline-success" %>
                     <% end %>
                   </div>
